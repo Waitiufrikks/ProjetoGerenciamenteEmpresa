@@ -1,8 +1,3 @@
-"""
-Sistema de Gestão de Empresa - Interface Gráfica
-Aplicação modernizada com GUI usando Tkinter e persistência em JSON
-"""
-
 import tkinter as tk
 from gui_application import EmployeeManagementApp
 

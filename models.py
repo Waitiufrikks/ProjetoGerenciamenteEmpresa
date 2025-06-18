@@ -1,8 +1,3 @@
-"""
-Modelos de dados para o sistema de gestão de empresa
-Contém as classes Employee e Department com suas funcionalidades
-"""
-
 class Employee:
     """Classe que representa um empregado da empresa"""
     
@@ -11,14 +6,6 @@ class Employee:
     def __init__(self, name, cpf, phone, address, department="Nenhum", employee_id=None):
         """
         Inicializa um novo empregado
-        
-        Args:
-            name (str): Nome do empregado
-            cpf (str): CPF do empregado
-            phone (str): Telefone do empregado
-            address (str): Endereço do empregado
-            department (str): Setor do empregado
-            employee_id (int): ID específico (usado ao carregar dados)
         """
         if employee_id is not None:
             self.id = employee_id
@@ -38,11 +25,6 @@ class Employee:
     def update_data(self, name=None, phone=None, address=None):
         """
         Atualiza os dados do empregado
-        
-        Args:
-            name (str): Novo nome (opcional)
-            phone (str): Novo telefone (opcional)
-            address (str): Novo endereço (opcional)
         """
         if name is not None:
             self.name = name
@@ -119,10 +101,6 @@ class Department:
     def from_dict(cls, data, employees_dict):
         """
         Cria um setor a partir de um dicionário
-        
-        Args:
-            data (dict): Dados do setor
-            employees_dict (dict): Dicionário de empregados por ID
         """
         department = cls(data['name'])
         for emp_id in data.get('team_ids', []):

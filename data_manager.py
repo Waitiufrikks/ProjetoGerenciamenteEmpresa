@@ -1,23 +1,12 @@
-"""
-Gerenciador de dados para persistência em arquivos JSON
-Responsável por salvar e carregar dados de empregados e setores
-"""
-
 import json
 import os
 from typing import List, Dict
 from models import Employee, Department
 
 class DataManager:
-    """Classe responsável pela persistência de dados em JSON"""
-    
     def __init__(self, employees_file="employees.json", departments_file="departments.json"):
         """
         Inicializa o gerenciador de dados
-        
-        Args:
-            employees_file (str): Nome do arquivo de empregados
-            departments_file (str): Nome do arquivo de setores
         """
         self.employees_file = employees_file
         self.departments_file = departments_file
@@ -25,12 +14,6 @@ class DataManager:
     def save_employees(self, employees: List[Employee]) -> bool:
         """
         Salva a lista de empregados no arquivo JSON
-        
-        Args:
-            employees (List[Employee]): Lista de empregados
-            
-        Returns:
-            bool: True se salvou com sucesso, False caso contrário
         """
         try:
             data = [emp.to_dict() for emp in employees]
@@ -44,9 +27,6 @@ class DataManager:
     def load_employees(self) -> List[Employee]:
         """
         Carrega a lista de empregados do arquivo JSON
-        
-        Returns:
-            List[Employee]: Lista de empregados carregados
         """
         try:
             if not os.path.exists(self.employees_file):
@@ -67,12 +47,6 @@ class DataManager:
     def save_departments(self, departments: List[Department]) -> bool:
         """
         Salva a lista de setores no arquivo JSON
-        
-        Args:
-            departments (List[Department]): Lista de setores
-            
-        Returns:
-            bool: True se salvou com sucesso, False caso contrário
         """
         try:
             data = [dept.to_dict() for dept in departments]
@@ -86,12 +60,6 @@ class DataManager:
     def load_departments(self, employees_dict: Dict[int, Employee]) -> List[Department]:
         """
         Carrega a lista de setores do arquivo JSON
-        
-        Args:
-            employees_dict (Dict[int, Employee]): Dicionário de empregados por ID
-            
-        Returns:
-            List[Department]: Lista de setores carregados
         """
         try:
             if not os.path.exists(self.departments_file):
@@ -112,13 +80,6 @@ class DataManager:
     def save_all_data(self, employees: List[Employee], departments: List[Department]) -> bool:
         """
         Salva todos os dados (empregados e setores)
-        
-        Args:
-            employees (List[Employee]): Lista de empregados
-            departments (List[Department]): Lista de setores
-            
-        Returns:
-            bool: True se salvou tudo com sucesso, False caso contrário
         """
         employees_saved = self.save_employees(employees)
         departments_saved = self.save_departments(departments)
@@ -127,9 +88,6 @@ class DataManager:
     def load_all_data(self) -> tuple:
         """
         Carrega todos os dados (empregados e setores)
-        
-        Returns:
-            tuple: (employees, departments)
         """
         employees = self.load_employees()
         employees_dict = {emp.id: emp for emp in employees}

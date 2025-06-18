@@ -1,8 +1,3 @@
-"""
-Interface gráfica principal do sistema de gestão de empresa
-Implementa todas as funcionalidades usando Tkinter
-"""
-
 import tkinter as tk
 from tkinter import ttk, messagebox, simpledialog
 from models import Employee, Department
@@ -14,9 +9,6 @@ class EmployeeManagementApp:
     def __init__(self, root):
         """
         Inicializa a aplicação GUI
-        
-        Args:
-            root: Janela principal do Tkinter
         """
         self.root = root
         self.root.title("Sistema de Gestão de Empresa")
@@ -455,7 +447,6 @@ class EmployeeDialog:
 
 class EmployeeSelectionDialog:
     """Diálogo para seleção de empregado"""
-    
     def __init__(self, parent, employees, message):
         self.result = None
         

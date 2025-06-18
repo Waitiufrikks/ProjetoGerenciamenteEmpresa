@@ -1,8 +1,3 @@
-"""
-Script para gerar executável do sistema de gestão de empresa
-Usa PyInstaller para criar um arquivo .exe standalone
-"""
-
 import os
 import sys
 import subprocess
@@ -20,20 +15,18 @@ def build_executable():
         print("PyInstaller não encontrado. Instalando...")
         subprocess.check_call([sys.executable, "-m", "pip", "install", "pyinstaller"])
         print("PyInstaller instalado com sucesso!")
-    
-    # Parâmetros do PyInstaller
+
     pyinstaller_args = [
         "pyinstaller",
-        "--onefile",                    # Gera um único arquivo executável
-        "--windowed",                   # Sem console (apenas GUI)
-        "--name=SistemaGestaoEmpresa",  # Nome do executável
-        "--icon=NONE",                  # Sem ícone personalizado
-        "--add-data=employees.json;.",  # Incluir arquivo de dados (se existir)
-        "--add-data=departments.json;.", # Incluir arquivo de dados (se existir)
-        "main.py"                       # Arquivo principal
+        "--onefile",                    
+        "--windowed",                   
+        "--name=SistemaGestaoEmpresa",  
+        "--icon=NONE",                  
+        "--add-data=employees.json;.",  
+        "--add-data=departments.json;.", 
+        "main.py"
     ]
     
-    # Remover arquivos de dados se não existirem
     if not os.path.exists("employees.json"):
         pyinstaller_args = [arg for arg in pyinstaller_args if "employees.json" not in arg]
     
